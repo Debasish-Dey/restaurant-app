@@ -1,13 +1,27 @@
-const { default: mongoose } = require("mongoose");
+import mongoose from "mongoose";
 
-
-const foodModel= new mongoose.Schema({
-    name:String,
-    price:String,
-    img_path:String,
-    description:String,
-    resto_id:mongoose.Schema.Types.ObjectId,
+const foodSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+  img_path: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  resto_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant", // Assuming you have a Restaurant model
+    required: true,
+  },
 });
 
-export const  foodSchema= mongoose.models.foods
-|| mongoose.model("foods",foodModel);
+export default mongoose.models.Food || mongoose.model("Food", foodSchema);

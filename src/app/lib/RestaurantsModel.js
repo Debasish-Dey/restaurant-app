@@ -1,19 +1,18 @@
-const { default: mongoose } = require("mongoose");
+// models/Restaurant.js
+import mongoose from "mongoose";
 
-
-const restaurantModel= new mongoose.Schema({
-    name:String,
-    email:{
-        type:String,
-        // required:[true , "Email is required"],/
-        unique:true,
-        // dropDups:true,
-    },
-    password:String,
-    city:String,
-    address:String,
-    contact:String,
+const restaurantSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true,
+  },
+  password: { type: String, required: true },
+  city: { type: String, required: true },
+  address: { type: String, required: true },
+  contact: { type: String, required: true },
 });
 
-export const  restaurantSchema= mongoose.models.restaurants
-|| mongoose.model("restaurants",restaurantModel);
+export default mongoose.models.Restaurant ||
+  mongoose.model("Restaurant", restaurantSchema);

@@ -1,10 +1,20 @@
-const { default: mongoose } = require("mongoose");
+import mongoose from "mongoose";
 
-
-const orderModel= new mongoose.Schema({
-    resto_id:mongoose.Schema.Types.ObjectId,
-    user_id:mongoose.Schema.Types.ObjectId,
-    orderdetails:Array,
+const orderSchema = new mongoose.Schema({
+  resto_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant", // Assuming you have a Restaurant model
+    required: true,
+  },
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // Assuming you have a User model
+    required: true,
+  },
+  orderdetails: {
+    type: Array,
+    required: true,
+  },
 });
 
-export const  orderSchema= mongoose.models.orders|| mongoose.model("orders",orderModel);
+export default mongoose.models.Order || mongoose.model("Order", orderSchema);
