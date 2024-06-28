@@ -1,12 +1,12 @@
-import React from 'react'
-import Restaurentitemcart from '../_components/Restaurentitemcart'
+import React from "react";
+import Restaurentitemcart from "../_components/Restaurentitemcart";
 
 const page = () => {
   return (
     <div>
-      <Restaurentitemcart/>
+      <Restaurentitemcart />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
